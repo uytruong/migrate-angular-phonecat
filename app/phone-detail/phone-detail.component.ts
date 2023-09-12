@@ -1,11 +1,13 @@
-class PhoneDetailController {
+import * as angular from "angular";
+
+export class PhoneDetailController {
   phone: any;
   mainImageUrl: string = '';
 
-  static $inject = ['$routeParams', 'Phone'];
-  constructor($routeParams: angular.route.IRouteParamsService, Phone: any) {
+  static $inject = ['$routeParams', 'phoneService'];
+  constructor($routeParams: angular.route.IRouteParamsService, phoneService: any) {
     const phoneId = $routeParams['phoneId'];
-    this.phone = Phone.get({phoneId}, (phone: any) => {
+    this.phone = phoneService.get({phoneId}, (phone: any) => {
       this.setImage(phone.images[0]);
     });
   }
@@ -14,10 +16,7 @@ class PhoneDetailController {
     this.mainImageUrl = imageUrl;
   }
 }
-
-angular.
-module('phoneDetail').
-component('phoneDetail', {
-  templateUrl: 'phone-detail/phone-detail.template.html',
-  controller: PhoneDetailController
-});
+export class PhoneDetailComponent implements angular.IComponentOptions {
+  controller: any = PhoneDetailController;
+  templateUrl: string = '/app/phone-detail/phone-detail.template.html';
+}

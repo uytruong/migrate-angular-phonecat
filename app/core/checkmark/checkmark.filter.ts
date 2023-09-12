@@ -1,5 +1,5 @@
-'use strict';
-
-angular.
-  module('core').
-  filter('checkmark', () => (input: boolean) => input ? '\u2713' : '\u2718');
+export class CheckmarkFilter {
+  public static Factory() {
+    return (input: boolean) => input ? '\u2713' : '\u2718';
+  }
+}

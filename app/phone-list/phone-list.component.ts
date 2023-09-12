@@ -1,18 +1,18 @@
-class PhoneListController {
+import * as angular from "angular";
+
+export class PhoneListController {
   phones: any[];
   orderProp: string;
 
-  static $inject = ['Phone'];
-  constructor(Phone: any) {
-    this.phones = Phone.query();
+  static $inject = ['phoneService'];
+  constructor(phoneService: any) {
+    this.phones = phoneService.query();
     this.orderProp = 'age';
   }
 
 }
 
-angular.
-module('phoneList').
-component('phoneList', {
-  templateUrl: 'phone-list/phone-list.template.html',
-  controller: PhoneListController
-});
+export class PhoneListComponent implements angular.IComponentOptions {
+  controller: any = PhoneListController;
+  templateUrl: string = '/app/phone-list/phone-list.template.html';
+}
