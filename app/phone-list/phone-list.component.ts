@@ -1,4 +1,5 @@
 import * as angular from "angular";
+const template = require('./phone-list.template.html');
 
 export class PhoneListController {
   phones: any[];
@@ -14,5 +15,5 @@ export class PhoneListController {
 
 export class PhoneListComponent implements angular.IComponentOptions {
   controller: any = PhoneListController;
-  templateUrl: string = '/app/phone-list/phone-list.template.html';
+  template: string = template.default;
 }
