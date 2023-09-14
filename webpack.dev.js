@@ -5,7 +5,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
+    static: './src/dist',
     watchFiles: ['app/**/*.ts', 'app/**/*.html'],
     port: 9000
   }

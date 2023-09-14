@@ -6,17 +6,17 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: './app/app.module.ts'
+    app: './src/app.module.ts'
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Google Phone Gallery',
-      template: './index.html'
+      template: './src/index.html'
     }),
     new CopyPlugin({
       patterns: [
-        { from: "./app/phones", to: "phones" },
-        { from: "./app/img/phones", to: "img/phones" }
+        { from: "./src/phones", to: "phones" },
+        { from: "./src/img/phones", to: "img/phones" }
       ],
     }),
     new webpack.ProvidePlugin({
