@@ -34,7 +34,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts?$/,
-        use: 'ts-loader',
+        use: ['ts-loader', 'angular2-template-loader'],
         exclude: /node_modules/
       },
       {
@@ -43,7 +43,8 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        use: 'raw-loader'
+        type: 'asset/source',
+        exclude: /index\.html/
       }
     ]
   },

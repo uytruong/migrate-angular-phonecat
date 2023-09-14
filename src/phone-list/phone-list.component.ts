@@ -2,11 +2,9 @@ import {PhoneService} from "../core/phone/phone.service";
 import {Component} from "@angular/core";
 import {PhoneData} from "../core/phone/phonedata.model";
 
-const template = require('./phone-list.template.html');
-
 @Component({
   selector: 'phone-list',
-  template: template.default
+  templateUrl: './phone-list.template.html'
 })
 export class PhoneListComponent {
   phones: PhoneData[] = [];

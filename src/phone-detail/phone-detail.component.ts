@@ -3,11 +3,9 @@ import {RouteParams} from "../ajs-upgraded-providers";
 import {Component} from "@angular/core";
 import {PhoneData} from "../core/phone/phonedata.model";
 
-const template = require('./phone-detail.template.html');
-
 @Component({
   selector: 'phone-detail',
-  template: template.default
+  templateUrl: './phone-detail.template.html'
 })
 export class PhoneDetailComponent {
   phone: PhoneData | null = null;

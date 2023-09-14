@@ -35,6 +35,7 @@
     "@types/angular-sanitize": "^1.8.1",
     "@types/jasmine": "^4.3.5",
     "angular-mocks": "1.8.x",
+    "angular2-template-loader": "^0.6.2",
     "copy-webpack-plugin": "^11.0.0",
     "cpx": "^1.5.0",
     "css-loader": "^6.8.1",
