@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import './app.module.ajs';
 import {PhoneService} from "./core/phone/phone.service";
 import {PhoneListComponent} from "./phone-list/phone-list.component";
+import {routeParamsProvider} from "./ajs-upgraded-providers";
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import {PhoneListComponent} from "./phone-list/phone-list.component";
   ],
   providers: [
     PhoneService,
+    routeParamsProvider
   ]
 })
 export class AppModule implements DoBootstrap {
