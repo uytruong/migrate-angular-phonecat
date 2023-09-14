@@ -1,27 +1,21 @@
-import * as angular from 'angular';
-import 'angular-route';
-import 'angular-animate';
+import {DoBootstrap, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {UpgradeModule} from '@angular/upgrade/static';
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import "./app.css";
-import "./app.animations.css";
+// angularjs module
+import './app.module.ajs';
 
-import hashPrefixConfig from "./hashprefix.config";
-import routesConfig from "./routes.config";
+@NgModule({
+  imports: [
+    BrowserModule,
+    UpgradeModule
+  ]
+})
+export class AppModule implements DoBootstrap {
+  constructor(private upgrade: UpgradeModule) {
+  }
 
-import './core/core.module';
-import {AppAnimations} from './app.animations';
-import './phone-detail/phone-detail.module';
-import './phone-list/phone-list.module'
-
-// Define the `phonecatApp` module
-angular
-    .module('phonecatApp', [
-      'ngAnimate',
-      'ngRoute',
-      'core',
-      'phoneDetail',
-      'phoneList'])
-    .animation('.phone', AppAnimations.Factory())
-    .config(hashPrefixConfig)
-    .config(routesConfig)
+  ngDoBootstrap() {
+    this.upgrade.bootstrap(document.documentElement, ['phonecatApp'],  {strictDi: true});
+  }
+}
