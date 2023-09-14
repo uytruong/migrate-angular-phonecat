@@ -1,24 +1,22 @@
-import 'angular-resource';
+import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
+export interface PhoneData {
+  name: string;
+  snippet: string;
+  images: string[];
+}
+
+@Injectable()
 export class PhoneService {
-  $resource: any;
-  static $inject = ['$resource'];
+  constructor(private http: HttpClient) { }
 
-  constructor($resource) {
-    this.$resource = $resource('phones/:phoneId.json', {}, {
-      query: {
-        method: 'GET',
-        params: {phoneId: 'phones'},
-        isArray: true
-      }
-    });
+  query(): Observable<PhoneData[]> {
+    return this.http.get<PhoneData[]>(`phones/phones.json`);
   }
 
-  query() {
-    return this.$resource.query();
-  }
-
-  get(phoneIdObj, callback) {
-    return this.$resource.get(phoneIdObj, callback);
+  get(phoneId): Observable<PhoneData> {
+    return this.http.get<PhoneData>(`phones/${phoneId}.json`);
   }
 }

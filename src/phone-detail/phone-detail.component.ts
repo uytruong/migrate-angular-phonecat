@@ -1,14 +1,16 @@
 import * as angular from "angular";
+import {PhoneData, PhoneService} from "../core/phone/phone.service";
 const template = require('./phone-detail.template.html');
 
 export class PhoneDetailController {
-  phone: any;
+  phone: PhoneData | null = null;
   mainImageUrl: string = '';
 
   static $inject = ['$routeParams', 'phoneService'];
-  constructor($routeParams: angular.route.IRouteParamsService, phoneService: any) {
+  constructor($routeParams: angular.route.IRouteParamsService, phoneService: PhoneService) {
     const phoneId = $routeParams['phoneId'];
-    this.phone = phoneService.get({phoneId}, (phone: any) => {
+    phoneService.get(phoneId).subscribe(phone => {
+      this.phone = phone;
       this.setImage(phone.images[0]);
     });
   }
