@@ -1,14 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-
-export interface PhoneData {
-  imageUrl: string;
-  id: string;
-  name: string;
-  snippet: string;
-  images: string[];
-}
+import {PhoneData} from "./phonedata.model";
 
 @Injectable()
 export class PhoneService {

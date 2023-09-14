@@ -1,14 +1,20 @@
-import * as angular from "angular";
-import {PhoneData, PhoneService} from "../core/phone/phone.service";
+import {PhoneService} from "../core/phone/phone.service";
+import {RouteParams} from "../ajs-upgraded-providers";
+import {Component} from "@angular/core";
+import {PhoneData} from "../core/phone/phonedata.model";
+
 const template = require('./phone-detail.template.html');
 
-export class PhoneDetailController {
+@Component({
+  selector: 'phone-detail',
+  template: template.default
+})
+export class PhoneDetailComponent {
   phone: PhoneData | null = null;
   mainImageUrl: string = '';
 
-  static $inject = ['$routeParams', 'phoneService'];
-  constructor($routeParams: angular.route.IRouteParamsService, phoneService: PhoneService) {
-    const phoneId = $routeParams['phoneId'];
+  constructor(routeParams: RouteParams, phoneService: PhoneService) {
+    const phoneId = routeParams['phoneId'];
     phoneService.get(phoneId).subscribe(phone => {
       this.phone = phone;
       this.setImage(phone.images[0]);
@@ -18,8 +24,4 @@ export class PhoneDetailController {
   setImage(imageUrl: string) {
     this.mainImageUrl = imageUrl;
   }
-}
-export class PhoneDetailComponent implements angular.IComponentOptions {
-  controller: any = PhoneDetailController;
-  template: string = template.default;
 }

@@ -1,5 +1,6 @@
-import {PhoneData, PhoneService} from "../core/phone/phone.service";
+import {PhoneService} from "../core/phone/phone.service";
 import {Component} from "@angular/core";
+import {PhoneData} from "../core/phone/phonedata.model";
 
 const template = require('./phone-list.template.html');
 
