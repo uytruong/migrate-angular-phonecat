@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 export interface PhoneData {
+  imageUrl: string;
+  id: string;
   name: string;
   snippet: string;
   images: string[];
@@ -16,7 +18,7 @@ export class PhoneService {
     return this.http.get<PhoneData[]>(`phones/phones.json`);
   }
 
-  get(phoneId): Observable<PhoneData> {
+  get(phoneId: string): Observable<PhoneData> {
     return this.http.get<PhoneData>(`phones/${phoneId}.json`);
   }
 }
