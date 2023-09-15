@@ -11,7 +11,7 @@ export class PhoneService {
     return this.http.get<PhoneData[]>(`phones/phones.json`);
   }
 
-  get(phoneId: string): Observable<PhoneData> {
+  get(phoneId: string | null): Observable<PhoneData> {
     return this.http.get<PhoneData>(`phones/${phoneId}.json`);
   }
 }

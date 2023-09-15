@@ -1,4 +1,4 @@
-import {DoBootstrap, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {HttpClientModule} from '@angular/common/http';
@@ -11,15 +11,19 @@ import {PhoneListComponent} from "./phone-list/phone-list.component";
 import {routeParamsProvider} from "./ajs-upgraded-providers";
 import {PhoneDetailComponent} from "./phone-detail/phone-detail.component";
 import {CheckmarkPipe} from "./core/checkmark/checkmark.pipe";
+import {AppComponent} from "./app.component";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   imports: [
     BrowserModule,
     UpgradeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   declarations: [
+    AppComponent,
     PhoneListComponent,
     PhoneDetailComponent,
     CheckmarkPipe
@@ -27,13 +31,7 @@ import {CheckmarkPipe} from "./core/checkmark/checkmark.pipe";
   providers: [
     PhoneService,
     routeParamsProvider
-  ]
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule implements DoBootstrap {
-  constructor(private upgrade: UpgradeModule) {
-  }
-
-  ngDoBootstrap() {
-    this.upgrade.bootstrap(document.documentElement, ['phonecatApp'], {strictDi: true});
-  }
-}
+export class AppModule {}
