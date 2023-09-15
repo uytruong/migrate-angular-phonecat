@@ -1,5 +1,4 @@
 import {PhoneService} from "../core/phone/phone.service";
-import {RouteParams} from "../ajs-upgraded-providers";
 import {Component} from "@angular/core";
 import {PhoneData} from "../core/phone/phonedata.model";
 import {ActivatedRoute} from "@angular/router";
